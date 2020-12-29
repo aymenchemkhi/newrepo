@@ -2,7 +2,6 @@ def commit_id
 def container_name="containerdev"
 pipeline {
     agent any
-
     stages {
         stage('Preparation') {
             steps {
@@ -13,9 +12,7 @@ pipeline {
                 }
             }
         }
-        
         stage ('Compile Stage') {
-
             steps {
                     echo 'building .. '
                     //sh "cd complete"
@@ -28,8 +25,6 @@ pipeline {
                sh " mvn sonar:sonar -Dsonar.host.url=http://3.227.75.131:9000"
             }
         }
-
- 
         stage(' Build Docker image') {
             steps {
                 echo 'Building....'
